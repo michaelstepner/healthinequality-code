@@ -1,0 +1,18 @@
+# -project- ignores
+*.log
+archive/
+replicate/
+mortality_init_files.dta
+mortality_init_links.dta
+mortality_datagen_files.dta
+mortality_datagen_links.dta
+mortality_files.dta
+mortality_links.dta
+mortality_tests_files.dta
+mortality_tests_links.dta
+
+# Other ignores
+data/
+scratch/
+results/
+code/set_julia.do
