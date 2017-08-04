@@ -44,7 +44,7 @@ use "${derived}/Mortality Rates/national_mortratesBY_gnd_hhincpctile_age_year.dt
 keep if age_at_d >= 40
 
 * Calculate Gompertz parameters from mortality rates
-estimate_gompertz2 gnd pctile, gnd(gnd) age(age_at_d) mort(mortrate) n(count) ///
+estimate_gompertz2 gnd pctile, age(age_at_d) mort(mortrate) n(count) ///
 	collapsefrom(gnd pctile age_at_d yod) type(mle)
 
 * Output
@@ -65,7 +65,7 @@ keep if age_at_d <= 63  // keep only ages that appear in all years 2001-2014
 keep gnd pctile year age_at_d mortrate count  // keep only vars needed for Gompertz estimation
 
 * Calculate Gompertz parameters from mortality rates
-estimate_gompertz2 gnd pctile year, gnd(gnd) age(age_at_d) mort(mortrate) n(count) ///
+estimate_gompertz2 gnd pctile year, age(age_at_d) mort(mortrate) n(count) ///
 	type(mle)
 
 * Output
@@ -83,7 +83,7 @@ use "${derived}/Mortality Rates/Individual income/national_mortratesBY_gnd_INDin
 keep if age_at_d >= 40
 
 * Calculate Gompertz parameters from mortality rates
-estimate_gompertz2 gnd indv_earn_pctile, gnd(gnd) age(age_at_d) mort(mortrate) n(count) ///
+estimate_gompertz2 gnd indv_earn_pctile, age(age_at_d) mort(mortrate) n(count) ///
 	collapsefrom(gnd indv_earn_pctile age_at_d yod) type(mle)
 
 * Output
@@ -104,7 +104,7 @@ keep if age_at_d <= 63  // keep only ages that appear in all years 2001-2014
 keep gnd pctile year age_at_d mortrate count  // keep only vars needed for Gompertz estimation
 
 * Calculate Gompertz parameters from mortality rates
-estimate_gompertz2 gnd pctile year, gnd(gnd) age(age_at_d) mort(mortrate) n(count) ///
+estimate_gompertz2 gnd pctile year, age(age_at_d) mort(mortrate) n(count) ///
 	type(mle)
 
 * Output
@@ -125,7 +125,7 @@ keep if age_at_d <= 63  // keep only ages that appear in all years 2001-2014
 keep gnd pctile year age_at_d mortrate count  // keep only vars needed for Gompertz estimation
 
 * Calculate Gompertz parameters from mortality rates
-estimate_gompertz2 gnd pctile year, gnd(gnd) age(age_at_d) mort(mortrate) n(count) ///
+estimate_gompertz2 gnd pctile year, age(age_at_d) mort(mortrate) n(count) ///
 	type(mle)
 
 * Output
@@ -148,7 +148,7 @@ keep if age_at_d>=40
 assert inlist(hh_inc_q, 0, 1, 2, 3, 4)
 
 * Calculate Gompertz parameters from mortality rates
-estimate_gompertz2 cz gnd, gnd(gnd) age(age_at_d) mort(mortrate) n(count) ///
+estimate_gompertz2 cz gnd, age(age_at_d) mort(mortrate) n(count) ///
 	collapsefrom(cz gnd hh_inc_q yod age_at_d) ///
 	cz_popmsk(25000) type(mle)
 
@@ -168,7 +168,7 @@ keep if age_at_d>=40
 assert inrange(hh_inc_q, 1 ,4)
 
 * Calculate Gompertz parameters from mortality rates
-estimate_gompertz2 cz gnd, gnd(gnd) age(age_at_d) mort(mortrate) n(count) ///
+estimate_gompertz2 cz gnd, age(age_at_d) mort(mortrate) n(count) ///
 	collapsefrom(cz gnd hh_inc_q yod age_at_d) ///
 	cz_popmsk(25000) type(mle)
 
@@ -188,7 +188,7 @@ keep if age_at_d>=40
 assert inrange(hh_inc_q, 1 ,4)
 
 * Calculate Gompertz parameters from mortality rates
-estimate_gompertz2 cz gnd hh_inc_q, gnd(gnd) age(age_at_d) mort(mortrate) n(count) ///
+estimate_gompertz2 cz gnd hh_inc_q, age(age_at_d) mort(mortrate) n(count) ///
 	collapsefrom(cz gnd hh_inc_q yod age_at_d) ///
 	cz_popmsk(25000) type(mle)
 
@@ -210,7 +210,7 @@ keep if age_at_d <= 63  // keep only ages that appear in all years 2001-2014
 assert inrange(hh_inc_q, 1 ,4)
 
 * Calculate Gompertz parameters from mortality rates
-estimate_gompertz2 cz gnd hh_inc_q year, gnd(gnd) age(age_at_d) mort(mortrate) n(count) ///
+estimate_gompertz2 cz gnd hh_inc_q year, age(age_at_d) mort(mortrate) n(count) ///
 	cz_popmsk(590000) type(mle)  // 590k population corresponds to top 100 CZs
 
 * Output
@@ -229,7 +229,7 @@ keep if age_at_d>=40
 assert inrange(hh_inc_q, 1 ,4)
 
 * Calculate Gompertz parameters from mortality rates
-estimate_gompertz2 cz gnd hh_inc_q, gnd(gnd) age(age_at_d) mort(mortrate) n(count) ///
+estimate_gompertz2 cz gnd hh_inc_q, age(age_at_d) mort(mortrate) n(count) ///
 	collapsefrom(cz gnd hh_inc_q yod age_at_d) ///
 	cz_popmsk(25000) type(ols)
 
@@ -269,7 +269,7 @@ drop if min_num_pctiles<25
 drop num_pctiles min_num_pctiles
 
 * Calculate Gompertz parameters from mortality rates
-estimate_gompertz2 cz gnd hh_inc_q, gnd(gnd) age(age_at_d) mort(mortrate) ///
+estimate_gompertz2 cz gnd hh_inc_q, age(age_at_d) mort(mortrate) ///
 	cz_popmsk(25000) type(ols)
 	
 * Output
@@ -293,7 +293,7 @@ collapse (mean) mortrate (rawsum) count [w=count], by(cz gnd hh_inc_v age_at_d) 
 compress
 
 * Use estimate_gompertz.ado to calculate Gompertz parameters from mortality rates
-estimate_gompertz2 cz gnd hh_inc_v, gnd(gnd) age(age_at_d) mort(mortrate) n(count) ///
+estimate_gompertz2 cz gnd hh_inc_v, age(age_at_d) mort(mortrate) n(count) ///
 	type(mle) /*mortality rates file already masked*/
 	
 * Output
@@ -316,7 +316,7 @@ rename hh_inc_coli_q hh_inc_q
 assert inrange(hh_inc_q, 1 ,4)
 
 * Calculate Gompertz parameters from mortality rates
-estimate_gompertz2 cz gnd hh_inc_q, gnd(gnd) age(age_at_d) mort(mortrate) n(count) ///
+estimate_gompertz2 cz gnd hh_inc_q, age(age_at_d) mort(mortrate) n(count) ///
 	collapsefrom(cz gnd hh_inc_q yod age_at_d) ///
 	cz_popmsk(25000) type(mle)
 
@@ -340,7 +340,7 @@ keep if age_at_d>=40
 assert inrange(hh_inc_q, 1 ,4)
 
 * Calculate Gompertz parameters from mortality rates
-estimate_gompertz2 cty gnd, gnd(gnd) age(age_at_d) mort(mortrate) n(count) ///
+estimate_gompertz2 cty gnd, age(age_at_d) mort(mortrate) n(count) ///
 	collapsefrom(cty gnd hh_inc_q yod age_at_d) ///
 	cty_popmsk(25000) type(mle)
 
@@ -360,7 +360,7 @@ keep if age_at_d>=40
 assert inrange(hh_inc_q, 1 ,4)
 
 * Calculate Gompertz parameters from mortality rates
-estimate_gompertz2 cty gnd hh_inc_q, gnd(gnd) age(age_at_d) mort(mortrate) n(count) ///
+estimate_gompertz2 cty gnd hh_inc_q, age(age_at_d) mort(mortrate) n(count) ///
 	collapsefrom(cty gnd hh_inc_q yod age_at_d) ///
 	cty_popmsk(25000) type(mle)
 
@@ -384,7 +384,7 @@ keep if age_at_d >= 40
 assert inrange(hh_inc_q, 1 ,4)
 
 * Calculate Gompertz parameters from mortality rates
-estimate_gompertz2 st gnd, gnd(gnd) age(age_at_d) mort(mortrate) n(count) ///
+estimate_gompertz2 st gnd, age(age_at_d) mort(mortrate) n(count) ///
 	collapsefrom(st gnd hh_inc_q yod age_at_d) ///
 	type(mle)
 
@@ -404,7 +404,7 @@ keep if age_at_d >= 40
 assert inrange(hh_inc_q, 1 ,4)
 
 * Calculate Gompertz parameters from mortality rates
-estimate_gompertz2 st gnd hh_inc_q, gnd(gnd) age(age_at_d) mort(mortrate) n(count) ///
+estimate_gompertz2 st gnd hh_inc_q, age(age_at_d) mort(mortrate) n(count) ///
 	collapsefrom(st gnd hh_inc_q yod age_at_d) ///
 	type(mle)
 
@@ -426,7 +426,7 @@ keep if age_at_d <= 63  // keep only ages that appear in all years 2001-2014
 assert inrange(hh_inc_q, 1 ,4)
 
 * Calculate Gompertz parameters from mortality rates
-estimate_gompertz2 st gnd hh_inc_q year, gnd(gnd) age(age_at_d) mort(mortrate) n(count) ///
+estimate_gompertz2 st gnd hh_inc_q year, age(age_at_d) mort(mortrate) n(count) ///
 	type(mle)
 
 * Output

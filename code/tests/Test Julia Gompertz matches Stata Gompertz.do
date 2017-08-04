@@ -49,7 +49,7 @@ foreach prog in Stata Julia {
 
 		preserve
 
-		estimate_gompertz2 gnd pctile, gnd(gnd) age(age_at_d) mort(mortrate) n(count) ///
+		estimate_gompertz2 gnd pctile, age(age_at_d) mort(mortrate) n(count) ///
 			collapsefrom(gnd pctile age_at_d yod) type(mle) vce(`vce')
 
 		save "${root}/scratch/tests/Julia Gompertz matches Stata Gompertz/national_gompBY_gnd_hhincpctile - `prog' `vce'.dta", replace

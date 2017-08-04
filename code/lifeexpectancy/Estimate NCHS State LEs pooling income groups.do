@@ -57,7 +57,7 @@ project, original("${root}/code/ado/mle_gomp_est.ado") preserve
 project, original("${root}/code/ado/fastregby_gompMLE_julia.ado") preserve
 project, original("${root}/code/ado/estimate_gompertz.jl") preserve
 
-estimate_gompertz2 st gnd, gnd(gnd) age(age_at_d) mort(mortrate) n(count) ///
+estimate_gompertz2 st gnd, age(age_at_d) mort(mortrate) n(count) ///
 	type(mle)
 
 * Output
