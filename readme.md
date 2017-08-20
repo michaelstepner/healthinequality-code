@@ -5,7 +5,7 @@ Frina Lin and Jeremy Majerovitz provided outstanding research assistance and con
 
 For more information about the results of this project and to download the data and results, see [www.healthinequality.org](https://healthinequality.org). For more information on how to use this code to replicate the results, read on.
 
-# License for Code and Data
+# License for Code
 
 All of the files in this repository (with the exception of **code/readme.md** and those contained under **code/ado_ssc** and **code/ado_maptile_geo**) are released to the public domain under a [CC0 license](https://creativecommons.org/publicdomain/zero/1.0/) to permit the widest possible reuse. If you use our code or data, we ask that you cite our [2016 JAMA paper](http://jama.jamanetwork.com/article.aspx?articleId=2513561&guestAccessKey=4023ce75-d0fb-44de-bb6c-8a10a30a6173).
 
