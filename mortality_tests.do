@@ -9,8 +9,6 @@ local pdir=r(pdir)
 adopath ++ "`pdir'/code/ado_ssc"
 adopath ++ "`pdir'/code/ado"
 
-confirmcmd using "`pdir'/code/requirements.txt"  // check that required commands are installed
-
 
 ******************
 
