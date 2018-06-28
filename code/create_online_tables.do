@@ -454,11 +454,24 @@ save12 "${online}/health_ineq_online_table_15.dta", replace
 project, creates("${online}/health_ineq_online_table_15.dta")
 
 
+*** Online Data Table 16
+* National mortality rates by gender, age, year, and individual income percentile
+
+project, original("${root}/data/derived/Mortality Rates/Individual income/mskd_national_mortratesBY_gnd_INDincpctile_age_year.dta")
+use "${root}/data/derived/Mortality Rates/Individual income/mskd_national_mortratesBY_gnd_INDincpctile_age_year.dta", clear
+
+rename indv_earn_pctile indv_pctile
+rename indv_earn_Mean indv_inc
+
+save12 "${online}/health_ineq_online_table_16.dta", replace 
+project, creates("${online}/health_ineq_online_table_16.dta")
+
+
 *********************
 *** Export to CSV ***
 *********************
 
-forval i=1/15 { 
+forval i=1/16 { 
 	project, uses("${online}/health_ineq_online_table_`i'.dta")
 	use "${online}/health_ineq_online_table_`i'.dta", clear 
 	
@@ -472,7 +485,7 @@ forval i=1/15 {
 ***********************
 
 cap erase "${online}/health_ineq_all_online_tables_raw.xlsx"
-forval i=1/15 { 
+forval i=1/16 { 
 	project, uses("${online}/health_ineq_online_table_`i'.dta")
 	use "${online}/health_ineq_online_table_`i'.dta", clear 
 	export excel using "${online}/health_ineq_all_online_tables_raw.xlsx", first(var) sheetrep sh("Online Data Table `i'")

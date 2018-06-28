@@ -44,10 +44,10 @@ program define mask_few_deaths
 	* Replace cells that have 1 or 2 deaths with 3 deaths.
 	gen long deaths = chop(mortrate * count, 10e-6)
 	assert deaths==round(deaths)
+	label var deaths "Numerator of mortrate"
 	
 	replace deaths = 3 if inlist(deaths,1,2)
 	replace mortrate = deaths/count
-	drop deaths
 	
 	* Drop entire county/CZ if any of its cells contains a small count
 	if ("`geo'"!="") {
@@ -58,6 +58,8 @@ program define mask_few_deaths
 	assert count>=`mincount'
 	
 	* Output
+	order count, last
+	compress deaths
 	label data "Masked: all obs with 1 or 2 deaths recoded to 3 deaths before computing mortrate"
 	save13 `"`saving'"', replace
 	project, creates(`"`saving'"')
@@ -247,6 +249,9 @@ forvalues i=1/18 {
 	drop deadby_`i'_N
 }
 
+label var gnd "Gender"
+label var indv_earn_pctile "Individual Income Percentile"
+label var indv_earn_Mean "Mean Individual Income"
 
 * Calculate mortality rates
 gen_mortrates2 gnd indv_earn_pctile, age(age) year(tax_yr) n(count)
@@ -254,6 +259,8 @@ gen_mortrates2 gnd indv_earn_pctile, age(age) year(tax_yr) n(count)
 * Output
 save13 "${derived}/Mortality Rates/Individual income/national_mortratesBY_gnd_INDincpctile_age_year.dta", replace  // formerly irs_mortrates_by_nat_indvpctile.dta
 project, creates("${derived}/Mortality Rates/Individual income/national_mortratesBY_gnd_INDincpctile_age_year.dta")
+
+mask_few_deaths, saving("${derived}/Mortality Rates/Individual income/mskd_national_mortratesBY_gnd_INDincpctile_age_year.dta")
 
 
 *******
