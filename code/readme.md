@@ -11,6 +11,41 @@ If you look carefully at our code, you will discover that not all of the code fo
 
 This document is licensed under the [Creative Commons Attribution-NonCommercial 4.0 International License](https://creativecommons.org/licenses/by-nc/4.0/). You can adapt or redistribute the text for any non-commercial purpose, so long as you provide [attribution](https://creativecommons.org/licenses/by-nc/4.0/).
 
+## Contents
+
+* [Motivation](#motivation)
+* [Overview of the Health Inequality Project code](#overview-of-the-health-inequality-project-code)
+* [Folder Organization](#folder-organization)
+    - [Code](#code)
+    - [Data](#data)
+    - [Scratch](#scratch)
+    - [Results](#results)
+    - [Recap](#recap-how-information-flows-between-folders)
+* [Coding Style](#coding-style)
+    - [Short and focused do-files](#short-and-focused-do-files)
+    - [Specify the Root folder](#specify-the-root-folder)
+    - [File paths begin with $root](#file-paths-begin-with-root)
+    - [do-file header](#do-file-header)
+    - [Further header sections](#further-header-sections)
+    - [Descriptive variable names](#descriptive-variable-names)
+    - [Descriptive file and folder names](#descriptive-file-and-folder-names)
+    - [Datasets have unique IDs](#datasets-have-unique-ids)
+    - [Assert what you're expecting to be true](#assert-what-youre-expecting-to-be-true)
+    - [Don't repeat yourself (and how to avoid it)](#dont-repeat-yourself-and-how-to-avoid-it)
+    - [Indents and line breaks](#indents-and-line-breaks)
+    - [Write dates as YYYY-MM-DD](#write-dates-as-yyyy-mm-dd)
+    - [Figure file types](#figure-file-types)
+    - [Figure data in CSVs](#figure-data-in-csvs)
+    - [Outputting reported numbers](#outputting-reported-numbers)
+    - [Checklist prior to committing](#checklist-prior-to-committing)
+* [Automated Builds](#automated-builds)
+    - [Before automation](#before-automation)
+    - [After automation](#after-automation)
+    - [Builds in Stata using -project-](#builds-in-stata-using-project)
+* [Technical Debt](#technical-debt)
+* [Appendix](#appendix)
+* [Further reading](#further-reading)
+
 ## Motivation
 
 There are many ways to organize all the code, data, documentation, and results for a project.
