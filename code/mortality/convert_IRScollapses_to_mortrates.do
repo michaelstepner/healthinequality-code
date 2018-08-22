@@ -258,7 +258,7 @@ gen_mortrates2 gnd indv_earn_pctile, age(age) year(tax_yr) n(count)
 
 * Output
 save13 "${derived}/Mortality Rates/Individual income/national_mortratesBY_gnd_INDincpctile_age_year.dta", replace  // formerly irs_mortrates_by_nat_indvpctile.dta
-project, creates("${derived}/Mortality Rates/Individual income/national_mortratesBY_gnd_INDincpctile_age_year.dta")
+project, creates("${derived}/Mortality Rates/Individual income/national_mortratesBY_gnd_INDincpctile_age_year.dta") preserve
 
 mask_few_deaths, saving("${derived}/Mortality Rates/Individual income/mskd_national_mortratesBY_gnd_INDincpctile_age_year.dta")
 
