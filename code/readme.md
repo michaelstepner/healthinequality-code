@@ -541,7 +541,7 @@ use "$root/data/raw_data/some data.dta", clear
 <do lots of things>
 
 save "$root/data/derived_data/cleaned data.dta"
-project, creates("$root/data/raw_data/cleaned data.dta")
+project, creates("$root/data/derived_data/cleaned data.dta")
 ```
 
 Note that `project, original` came before `use`. And `project, creates` came after `save`. So the clearing of the loaded data was inconsequential. But sometimes you don't want the loaded data to be cleared, in which case you need to add the `preserve` option to the build command. Some common cases for that are:
