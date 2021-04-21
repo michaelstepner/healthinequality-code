@@ -37,12 +37,11 @@ If you are a git user, you can clone this repository using your favorite git cli
 
 ### Step 2: Download the data
 
-You have two options for downloading the data:
+First download the [data-only ZIP file](https://github.com/michaelstepner/healthinequality-code/releases/download/jama2016/health_ineq_replication_dataonly.zip) (1 GB). This contains all the data that you need to run the `mortality_datagen.do` (data generation) and `mortality.do` (analysis) pipeline. You'll need to run each of them to produce the results.
 
-1. You can download the [data-only ZIP file](https://github.com/michaelstepner/healthinequality-code/releases/download/jama2016/health_ineq_replication_dataonly.zip) (1 GB). This contains all the data that you need to run the `mortality_datagen.do` (data generation) and `mortality.do` (analysis) pipeline. You'll need to run each of them to produce the results.
-2. You can download the [data-and-results ZIP file](https://healthinequality.org/replication/health_ineq_replication_dataandresults.zip) (3 GB). This contains the data and all of the results generated when the code is run to completion. Then you can run the pipelines to regenerate the results, or run any individual code file.
+If you wish, you may additionally download the [derived results ZIP file](https://github.com/michaelstepner/healthinequality-code/releases/download/jama2016/health_ineq_replication_derivedresults.zip) (2 GB). This contains all of the derived data and results generated when the code is run to completion. Combined with the data-only ZIP file, you will be able to run any individual code file independently without running the entire pipeline (since all the intermediate files are included). You can also use this file to compare our original results with your replication output.
 
-Whichever ZIP file you choose, you should unzip it in the **root** folder of the mortality project. After unzipping, that folder will contain a **code** subfolder and a **data** subfolder (and possibly others).
+Each ZIP file you download should be unzipped in the **root** folder of the mortality project. After unzipping, that folder will contain a **code** subfolder and a **data** subfolder (and possibly others).
 
 ### Step 3: Configure Stata
 
